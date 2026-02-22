@@ -1,13 +1,14 @@
 {
   "name": "webchess",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "install:all": "npm install && cd server && npm install"
   },
   "dependencies": {
     "@types/chess.js": "^0.13.7",
