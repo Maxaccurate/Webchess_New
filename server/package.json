@@ -2,10 +2,11 @@
   "name": "webchess-server",
   "version": "1.0.0",
   "description": "WebChess 多人对战服务器",
-  "main": "server.js",
+  "main": "railway-start.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node railway-start.js",
+    "dev": "nodemon railway-start.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["chess", "multiplayer", "websocket", "game"],
   "author": "WebChess Team",
