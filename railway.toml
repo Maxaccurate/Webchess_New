@@ -1,0 +1,13 @@
+[build]
+builder = "nixpacks"
+watchPatterns = ["server/**"]
+
+[deploy]
+healthcheckPath = "/health"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
+
+[[services]]
+name = "webchess-server"
+port = 3000
+rootDir = "server"
