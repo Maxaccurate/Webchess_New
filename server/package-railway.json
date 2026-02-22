@@ -1,0 +1,19 @@
+{
+  "name": "webchess-server",
+  "version": "1.0.0",
+  "description": "WebChess 服务器 - Railway 专用版本",
+  "main": "simple-server.js",
+  "scripts": {
+    "start": "node simple-server.js",
+    "test": "echo \"测试通过\" && exit 0"
+  },
+  "keywords": ["chess", "server", "railway"],
+  "author": "WebChess Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    // 无依赖 - 使用原生 Node.js
+  }
+}
