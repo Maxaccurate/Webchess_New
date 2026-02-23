@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ChessBoard from './components/ChessBoard';
 import ChessTimer from './components/ChessTimer';
+import WelcomePage from './WelcomePage';
 import './App.css';
 
 function App() {
+  const [showWelcome, setShowWelcome] = useState(true);
   const [gameMode, setGameMode] = useState<'ai' | 'local' | 'online'>('ai');
   const [boardOrientation, setBoardOrientation] = useState<'white' | 'black'>('white');
   const [aiScore, setAiScore] = useState<number>(1000);
@@ -16,6 +18,20 @@ function App() {
     seconds: 5,
     increment: true
   });
+
+  // 检查是否第一次访问
+  useEffect(() => {
+    const hasVisited = localStorage.getItem('webchess_visited');
+    if (hasVisited) {
+      setShowWelcome(false);
+    }
+  }, []);
+
+  // 处理继续按钮
+  const handleContinue = () => {
+    localStorage.setItem('webchess_visited', 'true');
+    setShowWelcome(false);
+  };
 
   // 处理计时器超时
   const handleTimeOut = (player: 'white' | 'black') => {
@@ -42,6 +58,11 @@ function App() {
       setCurrentPlayer('white');
     }
   };
+
+  // 显示欢迎页面
+  if (showWelcome) {
+    return <WelcomePage onContinue={handleContinue} />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 dark:from-gray-800 dark:to-gray-900">
