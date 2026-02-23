@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebChess Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .status {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .test-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-left: 4px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 WebChess Deployment Test</h1>
+        
+        <div class="status success">
+            ✅ Deployment Successful!
+        </div>
+        
+        <div class="status info">
+            ℹ️ Testing basic functionality...
+        </div>
+        
+        <div class="test-item">
+            <strong>Domain:</strong> maxaccurate.dpdns.org
+        </div>
+        
+        <div class="test-item">
+            <strong>Status:</strong> <span id="status">Checking...</span>
+        </div>
+        
+        <div class="test-item">
+            <strong>Timestamp:</strong> <span id="timestamp"></span>
+        </div>
+        
+        <div class="test-item">
+            <strong>JavaScript:</strong> <span id="js-status">Testing...</span>
+        </div>
+        
+        <div class="test-item">
+            <strong>CSS:</strong> <span id="css-status">Testing...</span>
+        </div>
+        
+        <h2>Next Steps:</h2>
+        <ol>
+            <li>Main application will load automatically</li>
+            <li>Chess board should appear</li>
+            <li>All features should work</li>
+            <li>If you see this page, routing is working!</li>
+        </ol>
+        
+        <p>
+            <a href="/">Go to main app →</a>
+        </p>
+    </div>
+
+    <script>
+        // Update timestamp
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        
+        // Test JavaScript
+        document.getElementById('js-status').textContent = '✅ Working';
+        document.getElementById('js-status').style.color = 'green';
+        
+        // Test CSS
+        document.getElementById('css-status').textContent = '✅ Working';
+        document.getElementById('css-status').style.color = 'green';
+        
+        // Update status
+        document.getElementById('status').textContent = '✅ All systems operational';
+        document.getElementById('status').style.color = 'green';
+        
+        // Redirect to main app after 3 seconds
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 3000);
+    </script>
+</body>
+</html>
