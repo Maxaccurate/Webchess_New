@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebChess Error Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #d32f2f;
+        }
+        .test {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .success {
+            border-color: #4caf50;
+            background: #f1f8e9;
+        }
+        .error {
+            border-color: #f44336;
+            background: #ffebee;
+        }
+        button {
+            padding: 10px 20px;
+            background: #2196f3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 WebChess 错误诊断</h1>
+        
+        <div class="test" id="test1">
+            <h3>测试 1: 基本 HTML/CSS</h3>
+            <p>如果看到这个页面，说明 HTML 和 CSS 加载正常。</p>
+            <p id="test1-result">✅ 通过</p>
+        </div>
+        
+        <div class="test" id="test2">
+            <h3>测试 2: JavaScript</h3>
+            <p>点击按钮测试 JavaScript 功能：</p>
+            <button onclick="document.getElementById('test2-result').innerHTML = '✅ JavaScript 工作正常'">
+                测试 JavaScript
+            </button>
+            <p id="test2-result">等待测试...</p>
+        </div>
+        
+        <div class="test" id="test3">
+            <h3>测试 3: 控制台错误</h3>
+            <p>按 F12 打开开发者工具，查看 Console 标签是否有错误。</p>
+            <p id="test3-result">检查中...</p>
+        </div>
+        
+        <div class="test" id="test4">
+            <h3>测试 4: 网络请求</h3>
+            <p>按 F12 → Network 标签，刷新页面查看文件加载状态。</p>
+            <button onclick="loadAssets()">测试资源加载</button>
+            <div id="test4-result"></div>
+        </div>
+        
+        <div class="test" id="test5">
+            <h3>测试 5: 主应用</h3>
+            <p><a href="/">点击这里返回主应用</a></p>
+            <p>如果主应用空白，可能是以下问题：</p>
+            <ul>
+                <li>React 应用初始化失败</li>
+                <li>JavaScript 文件加载错误</li>
+                <li>路由配置问题</li>
+                <li>浏览器兼容性问题</li>
+            </ul>
+        </div>
+        
+        <h2>📋 请提供以下信息：</h2>
+        <ol>
+            <li>这个页面能正常显示吗？</li>
+            <li>JavaScript 按钮工作吗？</li>
+            <li>F12 → Console 有什么错误？</li>
+            <li>F12 → Network 哪些文件加载失败？</li>
+        </ol>
+    </div>
+
+    <script>
+        // 测试 3: 检查控制台错误
+        window.onerror = function(msg, url, line, col, error) {
+            document.getElementById('test3-result').innerHTML = 
+                '❌ JavaScript 错误: ' + msg + ' (行: ' + line + ')';
+            document.getElementById('test3').className = 'test error';
+        };
+        
+        // 测试 4: 加载资源
+        function loadAssets() {
+            var resultDiv = document.getElementById('test4-result');
+            resultDiv.innerHTML = '<p>测试资源加载...</p>';
+            
+            // 测试加载 CSS
+            var cssTest = document.createElement('link');
+            cssTest.rel = 'stylesheet';
+            cssTest.href = '/assets/index-CAvVbzFL.css';
+            cssTest.onload = function() {
+                resultDiv.innerHTML += '<p>✅ CSS 文件加载成功</p>';
+            };
+            cssTest.onerror = function() {
+                resultDiv.innerHTML += '<p>❌ CSS 文件加载失败</p>';
+            };
+            document.head.appendChild(cssTest);
+            
+            // 测试加载 JS
+            var jsTest = document.createElement('script');
+            jsTest.src = '/assets/index-edwXPmxJ.js';
+            jsTest.onload = function() {
+                resultDiv.innerHTML += '<p>✅ JavaScript 文件加载成功</p>';
+            };
+            jsTest.onerror = function() {
+                resultDiv.innerHTML += '<p>❌ JavaScript 文件加载失败</p>';
+            };
+            document.body.appendChild(jsTest);
+        }
+        
+        // 自动运行一些测试
+        setTimeout(function() {
+            if (typeof console !== 'undefined') {
+                document.getElementById('test3-result').innerHTML = '✅ 控制台可用';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
